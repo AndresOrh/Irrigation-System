@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    background:url(../Resources/hermosa-foto-maizal-cielo-azul.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Roboto", sans-serif;
+}
+
+.contenedor-form{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 400px;
+    height: 470px;
+    border-radius: 10px;
+    background-color: white;
+    
+    backdrop-filter: blur(10px);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.sub-contenedor-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sub-contenedor-form h1{
+    color:#064663;
+    text-align: left;
+    position: relative;
+    bottom: 38px;
+    font-size: 39px;
+    font-weight: bold;
+    
+}
+form .main-inputs{
+   display: block;
+    margin-bottom: 35px;
+
+}
+form .sub-inputs{
+    display: flex;
+}
+.inputs{
+    width: 330px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background: none;
+    color:black;
+    padding-left: 10px;
+    border: 0.5px black solid;
+    
+}
+/*.inputs::placeholder{
+    font-family: "Signika", sans-serif;
+    font-size: 16px;
+    color: black;
+    opacity: 1;
+    font-weight: lighter;
+    
+    
+}*/
+button{
+    width: 340px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 10px;
+    border: none;
+    height: 53px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color:#2F8137;
+    color: white;
+    font-size: 20px;
+   
+
+}
+
+h3{
+    color:black;
+    font-weight: lighter;
+    font-size: 22px;
+    padding-right: 10px;
+}
+
+h4{
+    font-weight: lighter;
+
+
+}
+.sub-contenedor-secundary{
+    display: flex;
+    padding: 10px;
+
+}
+.sub-contenedor-secundary h4{
+    font-size: 14px;
+}
+.sub-contenedor-secundary label{
+    margin-bottom: 10px;
+}
+.sub-inputs a{
+    text-decoration: none;
+    color: #2C5282;
+    font-size: 14px;
+    padding-left: 80px;
+}
