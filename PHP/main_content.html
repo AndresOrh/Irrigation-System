@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Irrigation System</title>
+  <link rel="stylesheet" href="../CSS/styles_main_content.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Signika:wght@300..700&display=swap" rel="stylesheet">
+  <!-- Incluir Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2><center>IRRIGATION SYSTEM</center></h2>
+      <nav>
+        <ul>
+          <li><a href="#"><img src="imagen1.png" class="nav-icon-1"> Home</a></li>
+          <li><a href="#"><img src="imagen2.png" class="nav-icon"> Profile</a></li>
+          <li><a href="#"><img src="imagen3.png" class="nav-icon"> Estadistics</a></li>
+          <li><a href="#"><img src="imagen4.png" class="nav-icon"> About Us</a></li>
+        </ul>
+      </nav>
+      <button class="help-btn"><img src="imagen5.png"> Need Help</button>
+     <a href="login.html"><button class="log-out-btn">Log Out</button></a>
+    </aside>
+    
+    <main class="main-content">
+      <!-- Contenedor para el gráfico de humedad del suelo -->
+      
+      <div class="chart-container">
+        <canvas id="moistureChart"></canvas>
+        <div class="chart-label">Soil Moisture</div>
+        <div id="moistureValue" class="chart-value">0</div> <!-- Mostrar el valor de humedad del suelo -->
+      </div>
+
+      <!-- Contenedor para el gráfico de temperatura -->
+      <div class="chart-container">
+        <canvas id="temperatureChart"></canvas>
+        <div class="chart-label">Temperature</div>
+        <div id="temperatureValue" class="chart-value">0</div> <!-- Mostrar el valor de temperatura -->
+      </div>
+
+      <!-- Contenedor para el gráfico de humedad del aire -->
+      <div class="chart-container">
+        <canvas id="humidityChart"></canvas>
+        <div class="chart-label">Humidity</div>
+        <div id="humidityValue" class="chart-value">0</div> <!-- Mostrar el valor de humedad del aire -->
+      </div>
+    </main>
+  </div>
+  <script src="../JAVASCRIP/codeblynk.js"></script>
+</body>
+</html>
