@@ -24,43 +24,54 @@
         </ul>
       </nav>
       <button class="help-btn"><img src="imagen5.png"> Need Help</button>
-     <a href="login.html"><button class="log-out-btn">Log Out</button></a>
-    
+      <a href="login.html"><button class="log-out-btn">Log Out</button></a>
     </aside>
-    
+
     <main class="main-content">
-      <!-- Contenedor para el gráfico de humedad del suelo -->
-      
+      <!-- Gráfico de humedad del suelo -->
       <div class="chart-container">
         <canvas id="moistureChart"></canvas>
         <div class="chart-label">Soil Moisture</div>
-        <div id="moistureValue" class="chart-value">0</div> <!-- Mostrar el valor de humedad del suelo -->
+        <div id="moistureValue" class="chart-value">0</div>
       </div>
 
-      <!-- Contenedor para el gráfico de temperatura -->
+      <!-- Gráfico de temperatura -->
       <div class="chart-container">
         <canvas id="temperatureChart"></canvas>
         <div class="chart-label">Temperature</div>
-        <div id="temperatureValue" class="chart-value">0</div> <!-- Mostrar el valor de temperatura -->
+        <div id="temperatureValue" class="chart-value">0</div>
       </div>
 
-      <!-- Contenedor para el gráfico de humedad del aire -->
+      <!-- Gráfico de humedad del aire -->
       <div class="chart-container">
         <canvas id="humidityChart"></canvas>
         <div class="chart-label">Humidity</div>
-        <div id="humidityValue" class="chart-value">0</div> <!-- Mostrar el valor de humedad del aire -->
+        <div id="humidityValue" class="chart-value">0</div>
       </div>
-      <!-- Contenedor del switch -->
+
+      <div class="chart-container-menu">
+      <!-- Menú desplegable para cambiar el tipo de gráfico -->
+       <div class="sub-chart-container">
+          <label for="chartType">Cambiar tipo de gráfico:</label>
+          <select id="chartType">
+            <option value="doughnut">Gráfico de Dona</option>
+            <option value="pie">Gráfico de Pastel</option>
+            <option value="bar">Gráfico de Barra</option>
+            <option value="line">Grafico de Area</option>
+          </select>
+     </div>
+    </div>
+
+      <!-- Interruptor de la bomba de agua -->
       <div class="chart-container-switch">
         <label for="waterPumpSwitch" class="chart-label">Water Pump</label>
         <input type="checkbox" id="waterPumpSwitch" class="water-pump-switch">
       </div>
-      
-      
+      <div class="chart-container-switch">
+        <label for="automatedIrrigationSwitch" class="chart-label">Automated Irrigation</label>
+        <input type="checkbox" id="automatedIrrigationSwitch" class="automatedIrrigationSwitch">
+      </div>
     </main>
-   
-    
-
   </div>
   
   <script src="../JAVASCRIP/codeblynk.js"></script>
