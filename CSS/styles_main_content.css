@@ -182,7 +182,61 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
+  width: 250px;
   height: 100px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
+
+.chart-container-switch button{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.chart-container-menu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 100px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+select{
+  border:none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.automatedIrrigationSwitch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ccc;
+  outline: none;
+  border-radius: 34px;
+  
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.automatedIrrigationSwitch:checked {
+  background-color: #2a77aa/* Color cuando está encendido */
+}
+
+.automatedIrrigationSwitch::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.automatedIrrigationSwitch:checked::before {
+  transform: translateX(26px); /* Mueve el círculo hacia la derecha cuando está encendido */
+}
+
