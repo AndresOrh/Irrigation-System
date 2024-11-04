@@ -1,11 +1,11 @@
- // Tu Auth Token de Blynk
+// Tu Auth Token de Blynk
  const authToken = "soFrN_So6dtxBMZXSHFq6JuXH7vjKAwA";
  const apiUrl = `https://blynk.cloud/external/api/get?token=${authToken}`;
 
 
  // Pines virtuales de Blynk
  const moisturePin = "V0";
- const waterPumpPin = "V1";
+ const sensorSwapPin = "V1";
  const temperaturePin = "V2";
  const humidityPin = "V3";
  const automatedIrrigationPin = "V4";
@@ -30,7 +30,7 @@
   const data = {
     datasets: [{
       data: type === 'bar' ? [value] : [value, 100 - value],
-      backgroundColor: type === 'bar' ? [color] : [color, '#e0e0e0'],
+      backgroundColor: type === 'bar' ? [color] : [color, '#FFFFFF'],
       borderWidth: 2
     }],
     labels: type === 'bar' || type === 'line' ? ['Value'] : []
@@ -40,7 +40,7 @@
     responsive: true,
     plugins: {
       legend: { display: false },
-      tooltip: { enabled: true }
+      tooltip: { enabled: false }
     },
     cutout: type === 'doughnut' ? '80%' : 0,
     scales: type === 'bar' || type === 'line' ? {
@@ -137,42 +137,76 @@
  });
  
 
- // --- Control de la bomba de agua ---
+ // --- Control de el Swap Button---
 
- const waterPumpSwitch = document.getElementById('waterPumpSwitch');
+ const sensorSwapSwitch = document.getElementById('sensorSwapBtn');
 
  // Función para enviar el estado del interruptor a Blynk
- async function setWaterPumpState(state) {
-   const url = `https://blynk.cloud/external/api/update?token=${authToken}&${waterPumpPin}=${state}`;
+ async function setSensorSwapState(state) {
+   const url = `https://blynk.cloud/external/api/update?token=${authToken}&${sensorSwapPin}=${state}`;
    try {
      const response = await fetch(url);
      if (!response.ok) {
        console.error('Error en la respuesta de Blynk:', response.status, response.statusText);
-       throw new Error('Error al enviar el estado de la bomba de agua a Blynk');
+       throw new Error('Error al enviar el estado del swap button');
      } else {
-       console.log(`Estado de la bomba de agua enviado exitosamente: ${state}`);
+       console.log(`Estado de el swap button enviado exitosamente: ${state}`);
      }
    } catch (error) {
-     console.error("Error al actualizar la bomba de agua en Blynk:", error);
+     console.error("Error al actualizar el swap button en Blynk:", error);
    }
  }
 
  // Manejar el cambio de estado del interruptor
- waterPumpSwitch.addEventListener('change', () => {
-   const pumpState = waterPumpSwitch.checked ? 1 : 0;
-   setWaterPumpState(pumpState);
+sensorSwapSwitch.addEventListener('change', () => {
+   const swapState = sensorSwapSwitch.checked ? 1 : 0;
+   setSensorSwapState(swapStateState);
  });
 
  // Inicializar el estado del interruptor basado en los datos de Blynk
- async function initWaterPumpState() {
-   const pumpState = await getDataFromBlynk(waterPumpPin);
-   if (pumpState !== null) {
-     waterPumpSwitch.checked = pumpState === 1;
+ async function initSensorSwapState() {
+   const swapState = await getDataFromBlynk(sensorSwapPin);
+   if (swapState !== null) {
+     sensorSwapSwitch.checked = swapState === 1;
    }
  }
 
- // Llamar a la inicialización del interruptor de la bomba de agua
- initWaterPumpState();
+ // Llamar a la inicialización del interruptor de el swap button
+ initSensorSwapState();
+
+ const sensors = ["Sensor 1", "Sensor 2", "Sensor 3"];
+let currentSensorIndex = 0;  // Índice del sensor actual
+
+// Referencia al botón de Swap
+const sensorSwapBtn = document.getElementById('sensorSwapBtn');
+
+// Función para actualizar el sensor activo en la interfaz
+function updateSensorDisplay() {
+    document.getElementById("sensorDisplay").innerText = sensors[currentSensorIndex];
+}
+
+// Función para cambiar al siguiente sensor y alternar el mensaje del botón
+function toggleSensor() {
+    // Cambiar al siguiente sensor en el ciclo
+    currentSensorIndex = (currentSensorIndex + 1) % sensors.length;
+    updateSensorDisplay();  // Actualizar la interfaz
+
+    // Enviar el estado del sensor a Blynk
+    setSensorSwapState(currentSensorIndex + 1);  // Ajustar el índice a partir de 1
+
+    // Cambiar el mensaje del botón
+    if (sensorSwapBtn.innerText === "Swap") {
+        sensorSwapBtn.innerText = "Swapped";
+    } else {
+        sensorSwapBtn.innerText = "Swap";
+    }
+}
+
+// Asignar el evento de clic al botón
+sensorSwapBtn.addEventListener('click', toggleSensor);
+
+// Inicializar el sensor activo al cargar la página
+updateSensorDisplay();
 
 
  //Control de el boton de Automatizacion del sistema de riego
