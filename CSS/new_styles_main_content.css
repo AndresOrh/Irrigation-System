@@ -1,0 +1,327 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+  }
+  
+body{
+  height: 100vh;
+  display: flex;
+ 
+  width: 100%;
+  background-color: white;
+}
+
+.sidebar {
+    width: 20%;
+    padding: 20px;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    
+}
+
+.sub_sidebar{
+  background-color:#A0A605 ;
+  border-radius: 25px;
+  height: 100%;
+  width: 280px;
+}
+.titulo-sistema{
+  background-color:#667302;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  border-radius: 25px;
+}
+.menu_sidebar_1{
+  text-align: center;
+  
+
+}
+.menu_sidebar_1 h3{
+  font-weight: lighter;
+}
+.menu_sidebar_2{
+  padding: 10px 30px 40px 20px;
+}
+.menu_cont{
+  display: flex;
+  align-items: center;
+  padding: 10px 30px 40px 5px;
+
+  
+}
+.menu_cont a {
+  text-decoration: none;
+}
+.menu_cont h3{
+  font-weight: lighter;
+  padding: 0px 10px 0px 10px;
+  color: white;
+  
+}
+.menu_cont img{
+  width: 30px;
+  height: 30px;
+}
+.menu_sidebar_3{
+  position: absolute;
+  bottom: 20%;
+  left: 8%;
+  display: flex;
+  align-items:center;
+  justify-content: right;
+}
+.menu_sidebar_3 img{
+  width: 30px;
+  height: 30px;
+}
+.menu_sidebar_3 h3{
+  font-weight: lighter;
+  color: white;
+  padding: 0px 10px 0px 10px;
+}
+
+.top-content{
+  height: 10%;
+  width: 90%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+
+}
+.top-content-2{
+  display:flex;
+  justify-content: right;
+  align-items: center;
+
+}
+.user{
+  width: 270px;
+  height: 70px;
+  background-color: #BF9E7580;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10px;
+}
+.img-user{
+  background-color: #806A6A;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.img-user img{
+  width: 40px;
+  height: 50px;
+
+}
+.notificaciones img{
+  width: 40px;
+  height: 40px;
+ 
+}
+
+
+
+.chart-container-menu{
+  width: 400px;
+  height: 50px;
+  background-color: #D9D9D9B2;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chart-type{
+  background-color:#BBBBBB ;
+  color: white;
+  border: none;
+  width: 220px; 
+  padding: 2px;
+  border-radius: 5px;
+}
+.contenedor-main{
+  display: block;
+  width: 70%;
+ 
+}
+.main-content {
+  display:block;
+}
+.graphs1{
+  display: flex;
+  align-items: center;
+  background-color:#D9D9D9B2;
+  border-radius: 10px;
+  margin: 0px 0px 20px 0px;
+ padding: 0px 25px 5px 25px;
+  height: 350px;
+  
+}
+.graphs2{
+  display: flex;
+  align-items: center;
+  background-color:#D9D9D9B2;
+  border-radius: 10px;
+  width: 650px;
+}
+.chart-container{
+  display: block;
+  text-align: center;
+  padding: 10px 50px 10px 30px;
+}
+canvas{
+  width: 220px;
+  height: 190px;
+}
+.chart-label {
+  font-size: 18px;
+  padding: 0px 10px 0px 10px;
+  font-weight: lighter;
+}
+.chart-value {
+  font-size: 24px;
+  font-weight:bold;
+}
+.water-pump-switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ccc;
+  outline: none;
+  border-radius: 34px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.water-pump-switch:checked {
+  background-color: #4CAF50; /* Color cuando está encendido */
+}
+
+.water-pump-switch::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.water-pump-switch:checked::before {
+  transform: translateX(26px); /* Mueve el círculo hacia la derecha cuando está encendido */
+}
+
+.automatedIrrigationSwitch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #ccc;
+  outline: none;
+  border-radius: 34px;
+  
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.automatedIrrigationSwitch:checked {
+  background-color: #722ed1/* Color cuando está encendido */
+}
+
+.automatedIrrigationSwitch::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.automatedIrrigationSwitch:checked::before {
+  transform: translateX(26px); /* Mueve el círculo hacia la derecha cuando está encendido */
+}
+
+.chart-container-switch-1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 100px;
+}
+
+.sensor-display{
+  text-align: center;
+  
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+.sensor-swap-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #4caf50;
+  background:transparent; /* Verde para el estado "Swap" */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: 1px solid #4caf50 ;
+
+}
+
+.sensor-swap-btn:hover {
+  background-color: #45a049;
+  color: white;
+}
+
+.sensor-swap-btn:active {
+  background-color: #3e8e41;
+}
+
+/* Cambiar el color del botón cuando está en estado "Swapped" */
+.sensor-swap-btn.swapped {
+  background-color: #f44336; /* Rojo para el estado "Swapped" */
+}
+
+.sensor-swap-btn.swapped:hover {
+  background-color: #e53935;
+}
+
+.sensor-swap-btn.swapped:active {
+  background-color: #d32f2f;
+}
+
+/* Estilo del texto que muestra el sensor activo */
+.sensor-display {
+  font-size: 18px;
+  font-weight: bold;
+  color: #555;
+  padding: 8px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  
+  text-align: center;
+  
+}
