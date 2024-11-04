@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irrigation System</title>
+    <link rel="stylesheet" href="../CSS/new_styles_main_content.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Signika:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        
+            <aside class="sidebar">
+                <div class="sub_sidebar">
+                    <div class="titulo-sistema">
+                        <h2>Irrigation System</h2>
+                    </div>
+                    <div class="menu_sidebar_1">
+                        <h3>Workspace</h3>
+                    </div>
+                    <div class="menu_sidebar_2">
+                        <div class="menu_cont">
+                            <img src="../Resources/main_content/Home.png" alt="">
+                          <a href="#"><h3>Home</h3></a>
+                            
+                        </div>
+                        <div class="menu_cont">
+                            <img src="../Resources/main_content/Document.png" alt="">
+                            <a href="#"><h3>History</h3></a>
+                            
+                        </div>
+                        <div class="menu_cont">
+                            <img src="../Resources/main_content/Estadistics-Icon.png" alt="">
+                            <a href="#"><h3>Estadistics</h3></a>
+                            
+                        </div>
+                        <div class="menu_cont">
+                            <img src="../Resources/main_content/AboutUs-Icon.png" alt="">
+                            <a href="#"><h3>About US</h3></a>
+                            
+                        </div>
+                    </div>
+                    <div class="menu_sidebar_3">
+                        <img src="../Resources/main_content/Help.png" alt="">
+                        <h3>Need Help</h3>
+            
+                    </div>
+                </div>
+            
+            </aside>
+            <div class="contenedor-main">
+                <div class="top-content">
+                    <div class="chart-container-menu">
+                            <!-- Menú desplegable para cambiar el tipo de gráfico -->
+                            <div class="sub-chart-container">
+                                <label for="chartType">Graph Type</label>
+                                <select id="chartType" class="chart-type">
+                                    <option value="doughnut">Donut</option>
+                                    <option value="pie">Pie</option>
+                                    <option value="bar">Bar</option>
+                                    <option value="line">Area</option>
+                                </select>
+                            </div>
+                    </div>
+                    <div class="top-content-2">
+                        <div class="notificaciones">
+                            <img src="../Resources/main_content/notificacion.png" alt="">
+                        </div>
+                        <div class="user">
+                            <div class="img-user">
+                                <img src="../Resources/main_content/User 01b.png" alt="">
+                            </div>
+                            <img src="../Resources/main_content/Arrow - Down Circle.png" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            
+                <main class="main-content">
+
+                    <div class="graphs1">
+                        <!-- Gráfico de humedad del suelo -->
+                        <div class="chart-container">
+                                <canvas id="moistureChart" ></canvas>
+                                <div class="chart-label">Soil Moisture</div>
+                                <div id="moistureValue" class="chart-value">0</div>
+                               
+    
+                        </div>
+                        <div class="chart-container-swap">
+                            <div id="sensorDisplay" class="sensor-display">Sensor 1</div>
+                            <div class="chart-container-switch-1">
+                                <button id="sensorSwapBtn" class="sensor-swap-btn">Swap</button>
+                            </div>
+                        </div>
+
+                        <div class="chart-container-switch-1">
+                            <label for="automatedIrrigationSwitch" class="chart-label">Automated Irrigation</label>
+                            <input type="checkbox" id="automatedIrrigationSwitch" class="automatedIrrigationSwitch">
+                        </div>
+                </div>
+                <div class="graphs2">
+                    <!-- Gráfico de temperatura -->
+                    <div class="chart-container">
+                        <canvas id="temperatureChart"></canvas>
+                        <div class="chart-label">Temperature</div>
+                        <div id="temperatureValue" class="chart-value">0</div>
+                    </div>
+
+                    <!-- Gráfico de humedad del aire -->
+                    <div class="chart-container">
+                        <canvas id="humidityChart"></canvas>
+                        <div class="chart-label">Humidity</div>
+                        <div id="humidityValue" class="chart-value">0</div>
+                    </div>
+
+                    <!-- Interruptor de la bomba de agua -->
+                </div>  
+                       
+                </main>
+            </div>
+        
+    <script src="../JAVASCRIP/codeblynk.js"></script>
+    </body>
+</html>

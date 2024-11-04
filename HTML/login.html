@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Irrigation System</title>
+    <link rel="stylesheet" href="../CSS/style_login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Estilos para el modal */
+        .modal {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000; /* Asegura que esté encima de todo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo más oscuro */
+            justify-content: center;
+            align-items: flex-start; /* Alinear al inicio */
+            padding-top: 20px; /* Espacio en la parte superior */
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 350px; /* Ancho del modal */
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            position: relative; /* Para el cierre */
+            animation: fadeIn 0.3s ease; /* Efecto de entrada */
+        }
+
+        /* Animación de entrada */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal h2 {
+            color: #D32F2F; /* Color del título */
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            color: #333;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+       
+
+        .modal-success {
+            color: #D32F2F; /* Color verde para éxito */
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #D32F2F;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Efecto de hover */
+        }
+
+        .modal button:hover {
+            background-color: #962626; /* Color al pasar el mouse */
+        }
+    </style>
+
+    <script>
+        // Función para mostrar el modal
+        function mostrarModal(titulo, mensaje, esExito, callback) {
+            const modal = document.getElementById('modal');
+            const modalTitulo = document.getElementById('modal-titulo');
+            const modalMensaje = document.getElementById('modal-mensaje');
+            const modalButton = document.getElementById('modal-boton');
+
+            modalTitulo.innerText = titulo;
+            modalMensaje.innerText = mensaje;
+
+            // Aplicar clase de estilo según el resultado
+            if (esExito) {
+                modalMensaje.classList.remove('modal-error');
+                modalMensaje.classList.add('modal-success');
+            } else {
+                modalMensaje.classList.remove('modal-success');
+                modalMensaje.classList.add('modal-error');
+            }
+
+            modalButton.onclick = function() {
+                modal.style.display = 'none'; // Cerrar el modal
+                if (callback) callback(); // Llamar al callback si existe
+            };
+
+            modal.style.display = 'flex'; // Mostrar el modal
+        }
+
+        function validarLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'AdminIrrigation' && password === 'soporte1234') {
+                // Redirigir directamente sin mostrar el modal
+                window.location.href = 'main_content.html'; // Cambia la URL a la que quieres redirigir
+            } else {
+                mostrarModal('Error', 'Usuario o contraseña incorrectos', false);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="contenedor-form">
+        <div class="sub-contenedor-form">
+            <form class="formulario-login" onsubmit="validarLogin(event)">
+                <h1>Sign In</h1>
+                <label for="username" class="main-inputs">
+                    <h3>User</h3>
+                    <input type="text" id="username" class="inputs" placeholder="Username" required>
+                </label>
+                <label for="password" class="main-inputs">
+                    <h3>Password</h3>
+                    <input type="password" id="password" class="inputs" placeholder="Password" required>
+                </label>
+                <div class="sub-contenedor-secundary">
+                    <label for="" class="sub-inputs">
+                        <input type="radio">
+                        <h4>Remember me</h4>
+                    </label>
+                    <label for="" class="sub-inputs">
+                        <a href="#">Forgot your Password?</a>
+                    </label>
+                </div>
+                <label for="">
+                    <button type="submit">Sign In</button>
+                </label>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-mensaje"></p>
+            <button id="modal-boton">Aceptar</button>
+        </div>
+    </div>
+</body>
+</html>
