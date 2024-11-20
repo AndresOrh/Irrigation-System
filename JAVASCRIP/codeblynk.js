@@ -1,4 +1,4 @@
-// Tu Auth Token de Blynk
+ // Tu Auth Token de Blynk
  const authToken = "soFrN_So6dtxBMZXSHFq6JuXH7vjKAwA";
  const apiUrl = `https://blynk.cloud/external/api/get?token=${authToken}`;
 
@@ -13,6 +13,12 @@
  let moistureChart, temperatureChart, humidityChart;
  let currentChartType = 'doughnut';  // Tipo de gráfico actual
 
+ let previousValues = {
+  moisture: null,
+  temperature: null,
+  humidity: null,
+};
+let notifications = [];
  // Función para obtener datos de Blynk
  async function getDataFromBlynk(pin) {
    try {
@@ -38,26 +44,45 @@
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false, // Permitir redimensionamiento
     plugins: {
-      legend: { display: false },
-      tooltip: { enabled: false }
+        legend: { display: false },
+        tooltip: { enabled: false }
     },
     cutout: type === 'doughnut' ? '80%' : 0,
     scales: type === 'bar' || type === 'line' ? {
-      y: {
-        beginAtZero: true,
-        max: 100,  // Aquí puedes ajustar el valor máximo según lo que necesites.
-        ticks: {
-          stepSize: 10 // Ajusta el tamaño de los pasos entre las marcas del eje Y
+        y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+                stepSize: 10
+            }
+        },
+        x: {
+            grid: {
+                display: false
+            }
         }
-      },
-      x: {
-        grid: {
-          display: false  // Puedes ocultar las líneas de la cuadrícula del eje X si lo prefieres
-        }
-      }
     } : {}
-  };
+};
+
+document.getElementById('chartType').addEventListener('change', () => {
+  currentChartType = document.getElementById('chartType').value;
+
+  // Destruir gráficos existentes
+  moistureChart.destroy();
+  temperatureChart.destroy();
+  humidityChart.destroy();
+
+  // Recrear gráficos con el tamaño ajustado
+  initCharts();
+});
+
+window.addEventListener('resize', () => {
+  if (moistureChart) moistureChart.resize();
+  if (temperatureChart) temperatureChart.resize();
+  if (humidityChart) humidityChart.resize();
+});
 
   return new Chart(ctx, {
     type: type === 'line' ? 'line' : type,
@@ -245,3 +270,76 @@ updateSensorDisplay();
 
  // Llamar a la inicialización del interruptor de la bomba de agua
  initAutomatedIrrigationState();
+
+function updateNotificationCount() {
+  const notificationCount = document.getElementById("notificationCount");
+  const count = notifications.length;
+
+  if (count > 0) {
+      notificationCount.innerText = count;
+      notificationCount.style.display = "block";
+  } else {
+      notificationCount.style.display = "none";
+  }
+}
+
+// Función para agregar una nueva notificación
+function addNotification(message) {
+  notifications.push(message);
+  updateNotificationCount();
+}
+
+// Función para mostrar/ocultar la lista de notificaciones
+function toggleNotificationList() {
+  const notificationList = document.getElementById("notificationList");
+  notificationList.innerHTML = ""; // Limpiar lista
+
+  if (notificationList.style.display === "none" || !notificationList.style.display) {
+      // Mostrar lista de notificaciones
+      notifications.forEach((notification, index) => {
+          const notificationItem = document.createElement("div");
+          notificationItem.classList.add("notification-item");
+          notificationItem.innerText = notification;
+
+          // Eliminar notificación al hacer clic
+          notificationItem.addEventListener("click", () => {
+              notifications.splice(index, 1); // Eliminar la notificación
+              updateNotificationCount();
+              toggleNotificationList(); // Actualizar lista
+          });
+
+          notificationList.appendChild(notificationItem);
+      });
+
+      notificationList.style.display = "block";
+  } else {
+      // Ocultar lista de notificaciones
+      notificationList.style.display = "none";
+  }
+}
+
+// Event listener para la campana
+document.querySelector(".notificaciones img").addEventListener("click", toggleNotificationList);
+
+// Función para verificar cambios en los sensores
+async function checkForSensorChanges() {
+  const moisture = await getDataFromBlynk(moisturePin);
+  const temperature = await getDataFromBlynk(temperaturePin);
+  const humidity = await getDataFromBlynk(humidityPin);
+
+  if (moisture !== previousValues.moisture && moisture >= 30) {
+      addNotification(`Soil moisture changed to ${moisture}%`);
+      previousValues.moisture = moisture;
+  }
+  if (temperature !== previousValues.temperature && temperature >= 40) {
+      addNotification(`Temperature changed to ${temperature}°C`);
+      previousValues.temperature = temperature;
+  }
+  if (humidity !== previousValues.humidity && humidity >= 70) {
+      addNotification(`Humidity changed to ${humidity}%`);
+      previousValues.humidity = humidity;
+  }
+}
+
+// Inicialización
+setInterval(checkForSensorChanges, 1000);
