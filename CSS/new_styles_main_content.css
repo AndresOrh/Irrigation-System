@@ -40,8 +40,6 @@ body{
 }
 .menu_sidebar_1{
   text-align: center;
-  
-
 }
 .menu_sidebar_1 h3{
   font-weight: lighter;
@@ -127,12 +125,6 @@ body{
   height: 50px;
 
 }
-.notificaciones img{
-  width: 40px;
-  height: 40px;
- 
-}
-
 
 
 .chart-container-menu{
@@ -176,15 +168,20 @@ body{
   background-color:#D9D9D9B2;
   border-radius: 10px;
   width: 650px;
+  height: 350px;
 }
 .chart-container{
   display: block;
   text-align: center;
   padding: 10px 50px 10px 30px;
+  position: relative;
+  width: 80%;
+  max-width: 350px; /* Puedes ajustar esto */
+  height: 250px; 
 }
-canvas{
-  width: 220px;
-  height: 190px;
+canvas {
+  width: 100% !important;
+  height: auto !important;
 }
 .chart-label {
   font-size: 18px;
@@ -324,4 +321,168 @@ canvas{
   
   text-align: center;
   
+}
+
+@media screen and (max-width: 1200px) {
+  body {
+      flex-direction: column;
+  }
+
+  .sidebar {
+      width: 100%;
+      height: auto;
+      padding: 10px;
+  }
+
+  .sub_sidebar {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .contenedor-main {
+      width: 100%;
+  }
+
+  .main-content{
+    width: 100%;
+  }
+
+  .menu_sidebar_3 {
+      position: static;
+      justify-content: center;
+      padding: 20px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .top-content {
+      flex-direction: column;
+      align-items: center;
+      height: auto;
+  }
+  .chart-container-menu{
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+
+  .top-content-2 {
+      width: 100%;
+      justify-content: center;
+      gap: 20px;
+      
+  }
+
+  .user {
+      width: 100%;
+      max-width: 270px;
+  }
+
+  .graphs1, .graphs2 {
+    padding:20px;
+    width: 100%;
+    display: inline-block;
+    height: auto;
+  }
+  .graphs1{
+    height: 60%;
+  }
+
+  .chart-container {
+    
+      padding: 20px;
+      width: 100%;
+      margin-bottom: 40px;
+      
+  }
+
+  .chart-container-switch-1 {
+      width: 100%;
+      flex-direction: column;
+      gap: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu_cont {
+      padding: 10px 5px;
+  }
+  .top-content{
+    width: 100%;
+  }
+  .menu_cont h3 {
+      font-size: 14px;
+  }
+
+  .chart-label {
+      font-size: 16px;
+  }
+
+  .chart-value {
+      font-size: 20px;
+  }
+
+  .sensor-display {
+      font-size: 16px;
+  }
+
+  .sensor-swap-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+  }
+}
+
+.notificaciones {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.notificaciones img {
+  width: 40px;
+  height: 40px;
+}
+
+.notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  display: none;
+}
+
+.notification-list {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: white;
+  color: red;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  max-height: 300px;
+  overflow-y: auto;
+  display: none; 
+  z-index: 1000;
+}
+
+.notification-list .notification-item {
+  padding: 10px;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.notification-list .notification-item:last-child {
+  border-bottom: none;
+}
+
+.notification-list .notification-item:hover {
+  background-color: #f5f5f5;
 }
